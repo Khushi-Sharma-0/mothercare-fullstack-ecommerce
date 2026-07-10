@@ -87,7 +87,7 @@ A full-stack e-commerce web application for baby and mom essentials, built using
 
 ## 🛒 Shopping Cart
 
-![Shopping Cart](Screenshots/06-Cart.png)
+![Shopping Cart](Screenshots/06-Carts.png)
 
 ---
 
