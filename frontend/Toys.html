@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+          content="width=device-width, initial-scale=1.0">
+    <title>Online Toys Store</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffeef8;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        header {
+            background: linear-gradient(to right, #ff66b2, #ed8dbd);
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        header nav ul li {
+            display: inline;
+        }
+
+        header nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #f3f4f6;
+        }
+
+        #products {
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .product {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        .product img {
+            width: 100%;
+            max-width: 200px;
+            height: 200px;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .product h3 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .product p {
+            color: #666666;
+            margin-bottom: 0.5rem;
+        }
+
+        .product button {
+            background: linear-gradient(to right, #ff7ebf,#f0a2c9);
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            outline: none;
+        }
+
+        .product button:hover {
+            background: linear-gradient(to right,  #f95fac, #ed8dbd);
+        }
+
+        #cart {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+        }
+
+        #cart h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        #cart-items {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item button {
+            background: linear-gradient(to right, #ff4d4f, #ff6382);
+            color: #ffffff;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            outline: none;
+        }
+
+        .cart-item button:hover {
+            background: linear-gradient(to right, #e63c3f, #f34d6f);
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity button {
+            background: linear-gradient(to right,  #ff7ebf,#f0a2c9);
+            color: #ffffff;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            outline: none;
+        }
+
+        .quantity button:hover {
+            background: linear-gradient(to right, #ff66b2, #ed8dbd);
+        }
+
+        .quantity input {
+            width: 40px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin: 0 0.5rem;
+            padding: 4px;
+            outline: none;
+        }
+    </style>
+  <link rel="stylesheet" href="assets/css/mc-shared.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Online Baby Toys Store</h1>
+            <nav>
+                <ul>
+                    <li><a href="Home_Page_New.html">Home</a></li>
+                    
+                    <li><a href="cart.html">Cart</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <section id="products">
+            <h2>Available Products</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 
+                        md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="product">
+                    <img 
+                    src=
+"https://images.meesho.com/images/products/471968405/usodz_512.webp"
+                     alt="Soft Teddy Bear">
+                    <h3>Soft Teddy Bear</h3>
+                    <p>₹1250.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('toys-soft-teddy-bear')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('toys-soft-teddy-bear')">🤍 Wishlist</button>
+                </div>
+                <div class="product">
+                    <img 
+                    src=
+"https://assets.myntassets.com/w_412,q_60,dpr_2,fl_progressive/assets/images/2024/AUGUST/29/s3Y0oeln_0b5e5a6d5a4d4151ba2d530572d4f920.jpg"
+                     alt="Colorful Rattle">
+                    <h3>Colorful Rattle</h3>
+                    <p>₹25.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('toys-colorful-rattle')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('toys-colorful-rattle')">🤍 Wishlist</button>
+                </div>
+                <div class="product">
+                    <img src=
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvY5kc9ia2ynbZ1QYL0nAtZ7NKBAWXeMssuA&s"
+                      alt="Hanging Toys">
+                    <h3>Hanging Toys</h3>
+                    <p>₹450.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('toys-hanging-toys')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('toys-hanging-toys')">🤍 Wishlist</button>
+                </div>
+                <div class="product">
+                    <img src=
+"https://m.media-amazon.com/images/I/71Tx+KOaZdL.jpg"
+                     alt="Teethers">
+                    <h3>Teethers</h3>
+                    <p>₹190</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('toys-teethers')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('toys-teethers')">🤍 Wishlist</button>
+                </div>
+                <div class="product">
+                    <img src=
+"https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/16498688/2024/7/19/fcdffe05-e8ad-410a-bc8c-4ca0a955f7011721377916415-DukieKooky-Kids-Pink-Soft-Doll-6721721377916300-11.jpg"
+                      alt="Doll">
+                    <h3>Doll</h3>
+                    <p>₹750.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('toys-doll')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('toys-doll')">🤍 Wishlist</button>
+                </div>
+            </div>
+        </section>
+        
+    </div>
+    
+  <script src="assets/js/mc-core.js"></script>
+  <script src="assets/js/navbar.js"></script>
+</body>
+
+</html>    

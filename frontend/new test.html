@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mothercare 👼🏻</title> <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #fff0f5;
+      transition: background-color 0.3s ease;
+      color: #333;
+    }
+
+    .header-container { /* New container for the full logo */
+      background-color: #ffeef8;
+      padding: 10px 0; /* Adjusted padding */
+      border-bottom: 2px solid #ffb6c1;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      text-align: center; /* Center the logo */
+      margin-left: 220px; /* Offset for sidebar */
+    }
+
+    .header-container img {
+      max-width: 250px; /* Increased max-width for the full logo */
+      height: auto;
+      display: block; /* Ensures centering with margin auto */
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .site-name-text { /* New class for the text below the full logo */
+      font-size: 36px;
+      font-weight: 700;
+      color: #e91e63;
+      margin-top: 10px; /* Space between logo and text */
+      margin-bottom: 20px; /* Space below the text */
+      text-align: center; /* Center the text */
+    }
+
+    .sidebar {
+      position: fixed;
+      width: 220px;
+      height: 100%;
+      background: linear-gradient(to bottom, #ff85a2, #ffb6c1);
+      padding-top: 30px;
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      padding: 16px 24px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.3s ease, padding-left 0.3s ease;
+    }
+
+    
+
+    .sidebar  a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding-left: 32px;
+  /* text-shadow: 0 0 2px white; */
+}
+
+
+     /* Dropdown container */
+     .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: relative;
+      background-color: #f88aad;
+      margin-left: 20px;
+      margin-top: 5px;
+    }
+
+    .dropdown-content a {
+      padding: 12px 24px;
+      color: white;
+      text-decoration: none;
+      display: block;
+      font-weight: normal;
+    }
+
+    .dropdown-content a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      padding-left: 32px;
+      color: #fff;
+      text-shadow: none;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+
+
+
+
+    .main-content {
+      margin-left: 220px;
+      padding: 30px 20px;
+    }
+
+    .banner {
+      position: relative;
+      background-color: #ffeef8;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .hover-effect {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-effect:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .explore-button {
+      position: absolute;
+      bottom: 30px;
+      right: 80px;
+      padding: 12px 28px;
+      background: linear-gradient(to right, rgb(53, 116, 155),rgb(96, 178, 230));
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .explore-button:hover {
+      background: linear-gradient(to right, rgb(49, 125, 173),rgb(69, 153, 206));
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      transform: scale(1.05);
+    }
+
+    .section {
+      margin-bottom: 60px;
+    }
+
+    .section a.heading-link {
+      text-decoration: none;
+    }
+
+    .section h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #e91e63;
+      transition: color 0.3s ease, padding-left 0.3s ease;
+      cursor: pointer;
+    }
+
+    .section h1:hover {
+      color: #c2185b;
+      padding-left: 10px;
+    }
+
+    .section img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .section img:hover {
+      transform: scale(1.03);
+    }
+
+
+    .footer {
+  /* background-color: #ffccda; */
+  color: #e91e63 ; 
+  padding: 30px 20px;
+  text-align: center;
+  /* margin-left: 220px; Align with main content */
+  border-top: 2px solid #ffb6c1;
+  font-size: 15px;
+  margin-left:0;
+}
+
+.footer-content h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #e91e63;
+}
+
+.footer p {
+  margin: 6px 0;
+  line-height: 1.6;
+  color: #e91e63;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    /* margin-left: 0; */
+    padding: 20px 10px;
+  }
+}
+
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+
+      .header-container {
+        margin-left: 0;
+        padding: 10px;
+      }
+
+      .site-name-text {
+        font-size: 28px; /* Adjusted for smaller screens */
+      }
+
+      .main-content {
+        margin-left: 0;
+      }
+
+      .explore-button {
+        position: static;
+        margin-top: 15px;
+      }
+
+      
+
+.content-wrapper {
+  margin-left: 220px;
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    margin-left: 0;
+  }
+}  
+    }
+  </style>
+  <link rel="stylesheet" href="assets/css/mc-shared.css">
+</head>
+<body>
+  <div class="sidebar">
+    <a href="Home_Page_New.html">🏠 Home</a>
+    <a href="Banner.html">🛍️ Shop</a>
+    <a href="#">📦 Orders</a>
+    <!-- <a href="#">🧾 Categories</a> -->
+     <!-- Dropdown Menu for Categories -->
+    <div class="dropdown">
+      <a href="#">🧾 Categories</a>
+      <div class="dropdown-content">
+        <a href="Toys.html">Baby Toys</a>
+        <a href="Fedding essentials.html">Feeding Essentials</a>
+        <a href="Bathing and Hygiene.html">Bathing & Hygiene</a>
+        <a href="Clothes.html">Baby Clothes</a>
+        <a href="Sleep Essentials.html">Sleep Essentials</a>
+        <a href="Travel Essentials.html">Travel Essentials</a>
+        <a href="Nursery Essentials.html">Nursery Essentials</a>
+         <a href="Health & Safety.html">Health & Safety</a>
+      </div>
+    </div>
+
+    <a href="#">🛒 Cart</a>
+    <a href="#">🤍 Wishlist</a>
+    
+    <a href="Contact_Page.html">📞 Contact</a>
+  </div>
+
+  <div class="header-container">
+    <img src="Gemini_landscape_logo.png" alt="Mothercare Full Logo">
+    <div class="site-name-text"></div>
+  </div>
+
+  <div class="content-wrapper">
+
+    <div class="main-content">
+        <div class="banner">
+          <img src="BabY MOSTMAINimg.jpeg" alt="Main Banner" class="hover-effect" />
+          <a href="Banner.html" class="explore-button"> Explore Collection</a>
+        </div>
+
+          <div class="section">
+            <a href="Toys.html" class="heading-link"><h1>👶 Toys</h1></a>
+            <a href="Toys.html"><img src="Baby.png" alt="Toys"></a>
+          </div>
+      
+          <div class="section">
+            <a href="Fedding essentials.html" class="heading-link"><h1>🍼 Feeding Essentials</h1></a>
+            <a href="Fedding essentials.html">
+              <img src="https://originz.co/uploadfile/blog/feature1683715393.jpeg" alt="Feeding Essentials">
+            </a>
+          </div>
+      
+          <div class="section">
+            <a href="Bathing and Hygiene.html" class="heading-link"><h1>🛁 Bathing & Hygiene</h1></a>
+            <a href="Bathing and Hygiene.html">
+              <img src="https://image.slidesdocs.com/responsive-images/background/adorable-baby-bath-accessories-in-3d-featuring-soft-towels-fun-duck-toys-and-essentials-like-shampoo-and-shower-gel-bottles-on-a-cream-tile-powerpoint-background_c8014cdedd__960_540.jpg" alt="Bathing and Hygiene">
+            </a>
+          </a>
+          </div>
+      
+          <div class="section">
+            <a href="Clothes.html" class="heading-link"><h1>👕 Clothes</h1></a>
+            <a href="Clothes.html">
+              <img src="https://st2.depositphotos.com/8058504/11573/i/950/depositphotos_115730768-stock-photo-newborn-baby-clothes-on-wooden.jpg" alt="Baby Clothes">
+            </a>
+          </div>
+      
+          <div class="section">
+            <a href="Sleep Essentials.html" class="heading-link"><h1>🌙 Sleep Essentials</h1></a>
+            <a href="Sleep Essentials.html">
+              <img src="SleepMainPage.jpg" alt="Sleep Essentials">
+            </a>
+          </div>
+      
+          <div class="section">
+            <a href="Travel Essentials.html" class="heading-link"><h1>🧳 Travel Essentials</h1></a>
+            <a href="Travel Essentials.html">
+              <img src="Baby travelMain.jpg" alt="Travel Essentials">
+            </a>
+          </div>
+      
+          <div class="section">
+            <a href="Nursery Essentials.html" class="heading-link"><h1>🧸 Nursery Essentials</h1></a>
+            <a href="Nursery Essentials.html">
+              <img src="https://media.designcafe.com/wp-content/uploads/2020/01/23151304/modern-nursery-room-ideas.jpg" alt="Nursery Essentials">
+            </a>
+          </div>
+      
+          <div class="section">
+            <a href="Health & Safety.html" class="heading-link"><h1>🩺 Health & Safety</h1></a>
+            <a href="Health & Safety.html">
+              <img src="https://images.pexels.com/photos/3875100/pexels-photo-3875100.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Health and Safety">
+            </a>
+          </div>
+
+          <footer class="footer">
+            <div class="footer-content">
+              <h3>Contact Us</h3>
+              <p><strong>Email:</strong> support@mothercarestore.com</p>
+              <p><strong>Phone:</strong> +91 98765 43210</p>
+              <p><strong>Address:</strong> 123 Babycare Street, New Delhi, India</p>
+              <p>&copy; 2025 Mothercare 👼🏻. All rights reserved.</p>
+            </div>
+          </footer>
+        </div>
+      
+
+  <script src="assets/js/mc-core.js"></script>
+  <script src="assets/js/navbar.js"></script>
+</body>
+</html>

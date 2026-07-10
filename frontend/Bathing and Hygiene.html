@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+          content="width=device-width, initial-scale=1.0">
+    <title>Online  Baby Bathing & Hygiene Store</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffeef8;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        header {
+            background: linear-gradient(to right, #ff66b2, #ed8dbd);
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        header nav ul li {
+            display: inline;
+        }
+
+        header nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #f3f4f6;
+        }
+
+        #products {
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .product {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        .product img {
+            width: 100%;
+            max-width: 200px;
+            height: 200px;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .product h3 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .product p {
+            color: #666666;
+            margin-bottom: 0.5rem;
+        }
+
+        .product button {
+            background: linear-gradient(to right, #ff7ebf,#f0a2c9);
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            outline: none;
+        }
+
+        .product button:hover {
+            background: linear-gradient(to right,  #f95fac, #ed8dbd);
+        }
+
+        #cart {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+        }
+
+        #cart h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        #cart-items {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item button {
+            background: linear-gradient(to right, #ff4d4f, #ff6382);
+            color: #ffffff;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            outline: none;
+        }
+
+        .cart-item button:hover {
+            background: linear-gradient(to right, #e63c3f, #f34d6f);
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity button {
+            background: linear-gradient(to right,  #ff7ebf,#f0a2c9);
+            color: #ffffff;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            outline: none;
+        }
+
+        .quantity button:hover {
+            background: linear-gradient(to right, #ff66b2, #ed8dbd);
+        }
+
+        .quantity input {
+            width: 40px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin: 0 0.5rem;
+            padding: 4px;
+            outline: none;
+        }
+    </style>
+  <link rel="stylesheet" href="assets/css/mc-shared.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Online Baby Bathing & Hygiene Store</h1>
+            <nav>
+                <ul>
+                    <li><a href="Home_Page_New.html">Home</a></li>
+                    
+                    <li><a href="cart.html">Cart</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <section id="products">
+            <h2>Available Products</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 
+                        md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="product">
+                    <img 
+                    src=
+"https://m.media-amazon.com/images/I/61arc5YMRWL.jpg"
+                     alt="Baby Lotion">
+                    <h3>Baby Lotion</h3>
+                    <p>₹110.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('bathing-baby-lotion')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('bathing-baby-lotion')">🤍 Wishlist</button>
+                </div>
+                <div class="product">
+                    <img 
+                    src=
+"https://www.mamasandpapas.com/cdn/shop/products/skip-hop-baths-moby-3-stage-bathtub-grey-30891005116581_1024x1024@2x.jpg?v=1628693227"
+                     alt="Baby Bathtub">
+                    <h3>Baby Bathtub</h3>
+                    <p>₹4,450.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('bathing-baby-bathtub')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('bathing-baby-bathtub')">🤍 Wishlist</button>
+                </div>
+                <div class="product">
+                    <img src=
+                    "https://m.media-amazon.com/images/I/716zu9ZoeoL._AC_UF894,1000_QL80_.jpg"
+                      alt="Diaper Rash Cream">
+                    <h3>Diaper Rash Cream</h3>
+                    <p>₹250.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('bathing-diaper-rash-cream')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('bathing-diaper-rash-cream')">🤍 Wishlist</button>
+                </div>
+                <div class="product">
+                    <img src=
+"https://m.media-amazon.com/images/I/71IaECTSIeL.jpg"
+                     alt="Towels With Hoods">
+                    <h3>Towels With Hoods</h3>
+                    <p>₹690</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('bathing-towels-with-hoods')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('bathing-towels-with-hoods')">🤍 Wishlist</button>
+                </div>
+                <div class="product">
+                    <img src=
+"https://m.media-amazon.com/images/I/61f0n2D85yL.jpg"
+                     alt="Baby Shampoo">
+                    <h3>Baby Shampoo</h3>
+                    <p>₹290</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('bathing-baby-shampoo')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('bathing-baby-shampoo')">🤍 Wishlist</button>
+                </div>
+                
+            </div>
+        </section>
+        
+    </div>
+    
+  <script src="assets/js/mc-core.js"></script>
+  <script src="assets/js/navbar.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+          content="width=device-width, initial-scale=1.0">
+    <title>Online Baby Essential Store</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffeef8;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        header {
+            background: linear-gradient(to right, #ff66b2, #ed8dbd);
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        header nav ul li {
+            display: inline;
+        }
+
+        header nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #f3f4f6;
+        }
+
+        #products {
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .product {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        .product img {
+            width: 100%;
+            max-width: 200px;
+            height: 200px;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .product h3 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .product p {
+            color: #666666;
+            margin-bottom: 0.5rem;
+        }
+
+        .product button {
+            background: linear-gradient(to right, #ff7ebf,#f0a2c9);
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            outline: none;
+        }
+
+        .product button:hover {
+            background: linear-gradient(to right,  #f95fac, #ed8dbd);
+        }
+
+        #cart {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+        }
+
+        #cart h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        #cart-items {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item button {
+            background: linear-gradient(to right, #ff4d4f, #ff6382);
+            color: #ffffff;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            outline: none;
+        }
+
+        .cart-item button:hover {
+            background: linear-gradient(to right, #e63c3f, #f34d6f);
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity button {
+            background: linear-gradient(to right,  #ff7ebf,#f0a2c9);
+            color: #ffffff;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            outline: none;
+        }
+
+        .quantity button:hover {
+            background: linear-gradient(to right, #ff66b2, #ed8dbd);
+        }
+
+        .quantity input {
+            width: 40px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin: 0 0.5rem;
+            padding: 4px;
+            outline: none;
+        }
+    </style>
+  <link rel="stylesheet" href="assets/css/mc-shared.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Online Baby Essential Store</h1>
+            <nav>
+                <ul>
+                    <li><a href="Home_Page_New.html">Home</a></li>
+                    
+                    <li><a href="cart.html">Cart</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <section id="products">
+            <h2>Available Products</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 
+                        md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="product">
+                    <img 
+                    src=
+"https://www.babyforest.in/cdn/shop/files/2_aa21d462-e467-410f-bb7c-fa646105e131_2000x2000.jpg?v=1707459367"
+                     alt="Baby Girl Frock">
+                    <h3>Baby Girl Frock</h3>
+                    <p>₹1150.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('clothes-baby-girl-frock')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('clothes-baby-girl-frock')">🤍 Wishlist</button>
+                </div>
+
+                <div class="product">
+                    <img 
+                    src=
+"https://m.media-amazon.com/images/I/81Xg4M7IgGL.jpg"
+                     alt="Soft Teddy Bear">
+                    <h3>Baby Milk Feeding Bottle</h3>
+                    <p>₹489.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('feeding-baby-milk-feeding-bottle')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('feeding-baby-milk-feeding-bottle')">🤍 Wishlist</button>
+                </div>
+
+                <div class="product">
+                    <img 
+                    src=
+"https://m.media-amazon.com/images/I/61ziM+ODA3L.jpg"
+                     alt="Swaddles">
+                    <h3>Swaddles</h3>
+                    <p>₹670.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('sleep-swaddles')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('sleep-swaddles')">🤍 Wishlist</button>
+                </div>
+
+                <div class="product">
+                    <img src=
+"https://i0.wp.com/guitarandlace.com/wp-content/uploads/2022/02/baby-boy-mamas-boy.jpg"
+                     alt="Cute Baby Boy Outfit">
+                    <h3>Cute Baby Boy Outfit</h3>
+                    <p>₹1490</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('clothes-cute-baby-boy-outfit')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('clothes-cute-baby-boy-outfit')">🤍 Wishlist</button>
+                </div>
+
+                <div class="product">
+                    <img src=
+"https://m.media-amazon.com/images/I/51iQcD7S0dL._AC_UF1000,1000_QL80_.jpg"
+                      alt="Mosquito Net For Baby">
+                    <h3>Mosquito Net For Baby</h3>
+                    <p>₹950.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('health-mosquito-net-for-baby')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('health-mosquito-net-for-baby')">🤍 Wishlist</button>
+                </div>
+
+                <div class="product">
+                    <img 
+                    src=
+"https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ9NWKlQoElIgdN3WmGWhFu7lLv6AP0a1ibmEeWGWhW-T28ywfOjqdJdszlvBkwc_MP-PWUqA_bumONICm5su4ai0kjERPD4I4sSWgOV78"
+                     alt="Baby Carrier">
+                    <h3>Baby Carrier</h3>
+                    <p>₹1550.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('travel-baby-carrier')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('travel-baby-carrier')">🤍 Wishlist</button>
+                </div>
+
+                <div class="product">
+                    <img 
+                    src=
+"https://m.media-amazon.com/images/I/71XIhpUnBfL._AC_UF894,1000_QL80_DpWeblab_.jpg"
+                     alt="Dresser For Baby">
+                    <h3>Dresser For Baby</h3>
+                    <p>₹1950.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('nursery-dresser-for-baby')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('nursery-dresser-for-baby')">🤍 Wishlist</button>
+                </div>
+
+                <div class="product">
+                    <img 
+                    src=
+"https://images.meesho.com/images/products/471968405/usodz_512.webp"
+                     alt="Soft Teddy Bear">
+                    <h3>Soft Teddy Bear</h3>
+                    <p>₹1250.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('toys-soft-teddy-bear')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('toys-soft-teddy-bear')">🤍 Wishlist</button>
+                </div>
+
+                <div class="product">
+                    <img 
+                    src=
+"https://m.media-amazon.com/images/I/81ew7dVW0KL._AC_UY1000_.jpg"
+                     alt="Ruffle Tops Linen pants Set">
+                    <h3>Ruffle Tops Linen pants Set</h3>
+                    <p>₹1125.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('clothes-ruffle-tops-linen-pants-set')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('clothes-ruffle-tops-linen-pants-set')">🤍 Wishlist</button>
+                </div>
+                
+                <div class="product">
+                    <img 
+                    src=
+"https://www.mamasandpapas.com/cdn/shop/products/skip-hop-baths-moby-3-stage-bathtub-grey-30891005116581_1024x1024@2x.jpg?v=1628693227"
+                     alt="Baby Bathtub">
+                    <h3>Baby Bathtub</h3>
+                    <p>₹4,450.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('bathing-baby-bathtub')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('bathing-baby-bathtub')">🤍 Wishlist</button>
+                </div>
+
+                <div class="product">
+                    <img src=
+                    "https://m.media-amazon.com/images/I/71YDP8Vz9vL.jpg"
+                      alt="Baby Car Seat">
+                    <h3>Baby Car Seat</h3>
+                    <p>₹3,950.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('travel-baby-car-seat')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('travel-baby-car-seat')">🤍 Wishlist</button>
+                </div>
+
+                <div class="product">
+                    <img 
+                    src=
+"https://staranddaisy.in/wp-content/uploads/2023/02/new_naturalwood_cot_main.jpg"
+                     alt="Crib">
+                    <h3>Crib</h3>
+                    <p>₹9,599.99</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('sleep-crib')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('sleep-crib')">🤍 Wishlist</button>
+                </div>
+
+                <div class="product">
+                    <img 
+                    src=
+"https://m.media-amazon.com/images/I/71wYanQIclL._AC_UF894,1000_QL80_.jpg"
+                     alt="Baby Storage Baskets">
+                    <h3>Baby Storage Baskets</h3>
+                    <p>₹5925.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('nursery-baby-storage-baskets')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('nursery-baby-storage-baskets')">🤍 Wishlist</button>
+                </div>
+
+                <div class="product">
+                    <img src=
+                    "https://down-ph.img.susercontent.com/file/68f949757000502390faed404882cffd"
+                      alt="BABY GO BOYS Romper">
+                    <h3>BABY GO BOYS Romper</h3>
+                    <p>₹950.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('clothes-baby-go-boys-romper')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('clothes-baby-go-boys-romper')">🤍 Wishlist</button>
+                </div>
+
+                <div class="product">
+                    <img src=
+"https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/16498688/2024/7/19/fcdffe05-e8ad-410a-bc8c-4ca0a955f7011721377916415-DukieKooky-Kids-Pink-Soft-Doll-6721721377916300-11.jpg"
+                      alt="Doll">
+                    <h3>Doll</h3>
+                    <p>₹750.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('toys-doll')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('toys-doll')">🤍 Wishlist</button>
+                </div>
+
+                <div class="product">
+                    <img src=
+"https://m.media-amazon.com/images/I/719oCF8f2KL.jpg"
+                     alt="Baby Proofing Edge Safety">
+                    <h3>Baby Proofing Edge Safety</h3>
+                    <p>₹290</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('health-baby-proofing-edge-safety')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('health-baby-proofing-edge-safety')">🤍 Wishlist</button>
+                </div>
+
+                <div class="product">
+                    <img src=
+                    "https://annainthehouse.com/wp-content/uploads/2021/10/night-lights-for-babies.jpg"
+                      alt="Nightlight">
+                    <h3>Nightlight</h3>
+                    <p>₹290.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('sleep-nightlight')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('sleep-nightlight')">🤍 Wishlist</button>
+                </div>
+
+                <div class="product">
+                    <img src=
+"https://m.media-amazon.com/images/I/71b1ziwouWL.jpg"
+                     alt="Burp Cloths">
+                    <h3>Burp Cloths</h3>
+                    <p>₹569</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('feeding-burp-cloths')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('feeding-burp-cloths')">🤍 Wishlist</button>
+                </div>
+
+                <div class="product">
+                    <img src=
+"https://m.media-amazon.com/images/I/61QhfbyqMnL.jpg"
+                      alt="Wall Decor For Baby">
+                    <h3>Wall Decor For Baby</h3>
+                    <p>₹7,950.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('nursery-wall-decor-for-baby')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('nursery-wall-decor-for-baby')">🤍 Wishlist</button>
+                </div>
+
+                <div class="product">
+                    <img 
+                    src=
+"https://chai-namibia.com/cdn/shop/files/n.jpg?v=1745341462"
+                     alt="Nasal Aspirator For BabyD">
+                    <h3>Nasal Aspirator For Baby</h3>
+                    <p>₹1950.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('health-nasal-aspirator-for-baby')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('health-nasal-aspirator-for-baby')">🤍 Wishlist</button>
+                </div>
+
+                <div class="product">
+                    <img src=
+"https://m.media-amazon.com/images/I/71Tx+KOaZdL.jpg"
+                     alt="Teethers">
+                    <h3>Teethers</h3>
+                    <p>₹190</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('toys-teethers')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('toys-teethers')">🤍 Wishlist</button>
+                </div>
+
+                <div class="product">
+                    <img 
+                    src=
+"https://m.media-amazon.com/images/I/61arc5YMRWL.jpg"
+                     alt="Baby Lotion">
+                    <h3>Baby Lotion</h3>
+                    <p>₹110.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('bathing-baby-lotion')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('bathing-baby-lotion')">🤍 Wishlist</button>
+                </div>
+
+                <div class="product">
+                    <img src=
+"https://m.media-amazon.com/images/I/7141e6feH9L._AC_UF894,1000_QL80_.jpg"
+                     alt="Crib Mattress">
+                    <h3>Crib Mattress</h3>
+                    <p>₹50,190.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('sleep-crib-mattress')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('sleep-crib-mattress')">🤍 Wishlist</button>
+                </div>
+
+                <div class="product">
+                    <img src=
+                    "https://m.media-amazon.com/images/I/71O7yP5Uc2L._AC_UF894,1000_QL80_.jpg"
+                      alt="Nipples/teats">
+                    <h3>Nipples/teats</h3>
+                    <p>₹289.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('feeding-nipples-teats')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('feeding-nipples-teats')">🤍 Wishlist</button>
+                </div>
+                <div class="product">
+                    <img src=
+                    "https://m.media-amazon.com/images/I/71YDP8Vz9vL.jpg"
+                      alt="Baby Car Seat">
+                    <h3>Baby Car Seat</h3>
+                    <p>₹3,950.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('travel-baby-car-seat')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('travel-baby-car-seat')">🤍 Wishlist</button>
+                </div>
+                
+                <div class="product">
+                    <img src=
+"https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQ96f2r_tHuAIKxlDZ97Wnh0FozXW7dM2wmIMHG83NmLLhCb_ircAm5VfUvj97Vd3mazFEUQVF4JmoK-slPiyjFb0UNaKS1V2rz_FFK6X7mZQLu367vRc6F"
+                      alt="Baby Pink Dress">
+                    <h3>Baby Pink Dress</h3>
+                    <p>₹1550.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('clothes-baby-pink-dress')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('clothes-baby-pink-dress')">🤍 Wishlist</button>
+                </div>
+            </div>
+        </section>
+        
+    </div>
+    
+  <script src="assets/js/mc-core.js"></script>
+  <script src="assets/js/navbar.js"></script>
+</body>
+
+</html>

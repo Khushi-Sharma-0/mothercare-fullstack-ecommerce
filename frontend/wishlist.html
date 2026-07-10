@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Wishlist | MotherCare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/mc-shared.css">
+</head>
+<body class="mc-page">
+  <div class="mc-page-content">
+    <h1 class="mc-title">🤍 Your Wishlist</h1>
+    <div id="wishlist-container" class="mc-grid">Loading your wishlist…</div>
+  </div>
+
+  <script src="assets/js/mc-core.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script>
+    const container = document.getElementById('wishlist-container');
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+    }
+
+    async function render() {
+      if (!MC.isLoggedIn()) {
+        container.className = '';
+        container.innerHTML = `<div class="mc-empty-state">Please <a href="login.html?next=wishlist.html">log in</a> to view your wishlist.</div>`;
+        return;
+      }
+      let list;
+      try {
+        list = await MC.getWishlist();
+      } catch (err) {
+        container.innerHTML = `<div class="mc-empty-state">${err.message}</div>`;
+        return;
+      }
+
+      if (list.length === 0) {
+        container.className = '';
+        container.innerHTML = `<div class="mc-empty-state">Your wishlist is empty. <a href="Banner.html">Browse products →</a></div>`;
+        return;
+      }
+
+      container.className = 'mc-grid';
+      container.innerHTML = list.map(p => `
+        <div class="mc-product-card" data-id="${p.id}">
+          <img src="${p.image}" alt="${escapeHtml(p.name)}">
+          <h3>${escapeHtml(p.name)}</h3>
+          <div class="mc-price">₹${p.price.toFixed(2)}</div>
+          <div class="mc-product-actions">
+            <button class="mc-btn-add">Add to Cart</button>
+            <button class="mc-btn-wish active" title="Remove from wishlist">✕</button>
+          </div>
+        </div>
+      `).join('');
+
+      container.querySelectorAll('.mc-product-card').forEach(card => {
+        const id = card.dataset.id;
+        card.querySelector('.mc-btn-add').addEventListener('click', async () => {
+          await MC.addToCart(id, 1);
+          alert('Added to cart!');
+        });
+        card.querySelector('.mc-btn-wish').addEventListener('click', async () => {
+          await MC.removeFromWishlist(id);
+          render();
+        });
+      });
+    }
+
+    render();
+  </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout | MotherCare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/mc-shared.css">
+  <style>
+    .mc-checkout-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; }
+    @media (max-width: 800px) { .mc-checkout-grid { grid-template-columns: 1fr; } }
+    .mc-pay-options { display: flex; gap: 12px; margin-top: 8px; }
+    .mc-pay-options label {
+      flex: 1; border: 1.5px solid #f3b6c8; border-radius: 10px; padding: 12px;
+      text-align: center; cursor: pointer; font-size: 14px; font-weight: 600; color: #444;
+    }
+    .mc-pay-options input { margin-right: 6px; }
+    .mc-order-line { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; }
+  </style>
+</head>
+<body class="mc-page">
+  <div class="mc-page-content">
+    <h1 class="mc-title">💳 Checkout</h1>
+    <div class="mc-checkout-grid">
+      <div class="mc-card">
+        <h3 style="color:#e91e63;">Shipping Details</h3>
+        <form id="checkout-form" class="mc-auth-form" style="margin:0; max-width:none;">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" required />
+
+          <label for="address">Delivery Address</label>
+          <input type="text" id="address" required placeholder="Street, City, State, PIN" />
+
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" required placeholder="For delivery updates" />
+
+          <label>Payment Method</label>
+          <div class="mc-pay-options">
+            <label><input type="radio" name="payment" value="card" checked> 💳 Card / Online</label>
+            <label><input type="radio" name="payment" value="cod"> 💵 Cash on Delivery</label>
+          </div>
+
+          <button type="submit" class="mc-btn" id="pay-btn">Place Order</button>
+          <div class="mc-error" id="error-box"></div>
+          <div class="mc-success" id="success-box"></div>
+        </form>
+      </div>
+
+      <div class="mc-card">
+        <h3 style="color:#e91e63;">Order Summary</h3>
+        <div id="summary-container">Loading…</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/mc-core.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script>
+    const summaryContainer = document.getElementById('summary-container');
+    let currentCart = [];
+
+    async function loadSummary() {
+      if (!MC.isLoggedIn()) {
+        window.location.href = 'login.html?next=checkout.html';
+        return;
+      }
+      currentCart = await MC.getCart();
+      if (currentCart.length === 0) {
+        summaryContainer.innerHTML = `<div class="mc-empty-state">Your cart is empty. <a href="Banner.html">Go shopping →</a></div>`;
+        document.getElementById('pay-btn').disabled = true;
+        return;
+      }
+      const total = currentCart.reduce((s, i) => s + i.price * i.quantity, 0);
+      summaryContainer.innerHTML =
+        currentCart.map(i => `<div class="mc-order-line"><span>${i.name} × ${i.quantity}</span><span>₹${(i.price*i.quantity).toFixed(2)}</span></div>`).join('') +
+        `<hr style="border:none;border-top:1px solid #ffe0eb;margin:10px 0;">` +
+        `<div class="mc-order-line" style="font-weight:700;font-size:16px;"><span>Total</span><span>₹${total.toFixed(2)}</span></div>`;
+    }
+
+    document.getElementById('checkout-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const errorBox = document.getElementById('error-box');
+      const successBox = document.getElementById('success-box');
+      errorBox.style.display = 'none';
+      successBox.style.display = 'none';
+
+      const shipping = {
+        name: document.getElementById('name').value.trim(),
+        address: document.getElementById('address').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+      };
+      const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+      const payBtn = document.getElementById('pay-btn');
+      payBtn.disabled = true;
+      payBtn.textContent = 'Processing…';
+
+      try {
+        const result = await MC.checkout(shipping, paymentMethod);
+        if (result.checkoutUrl) {
+          // Real Stripe Checkout Session — redirect to Stripe's hosted page.
+          window.location.href = result.checkoutUrl;
+          return;
+        }
+        successBox.textContent = `🎉 Order #${result.orderId} confirmed! Total: ₹${result.total.toFixed(2)}. ${result.message || ''}`;
+        successBox.style.display = 'block';
+        document.getElementById('checkout-form').reset();
+        summaryContainer.innerHTML = `<div class="mc-empty-state">Thank you! Your order has been placed.</div>`;
+        payBtn.style.display = 'none';
+      } catch (err) {
+        errorBox.textContent = err.message;
+        errorBox.style.display = 'block';
+        payBtn.disabled = false;
+        payBtn.textContent = 'Place Order';
+      }
+    });
+
+    loadSummary();
+  </script>
+</body>
+</html>

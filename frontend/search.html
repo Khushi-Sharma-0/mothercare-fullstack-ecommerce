@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Search | MotherCare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/mc-shared.css">
+</head>
+<body class="mc-page">
+  <div class="mc-page-content">
+    <h1 class="mc-title" id="search-title">Search Results</h1>
+    <div id="results-container" class="mc-grid">Searching…</div>
+  </div>
+
+  <script src="assets/js/mc-core.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script>
+    const container = document.getElementById('results-container');
+    const title = document.getElementById('search-title');
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+    }
+
+    async function render() {
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get('q') || '';
+      title.textContent = q ? `Search Results for "${q}"` : 'All Products';
+
+      let products;
+      try {
+        products = await MC.getProducts(q ? { q } : {});
+      } catch (err) {
+        container.innerHTML = `<div class="mc-empty-state">${err.message}</div>`;
+        return;
+      }
+
+      if (products.length === 0) {
+        container.className = '';
+        container.innerHTML = `<div class="mc-empty-state">No products matched your search. Try a different keyword.</div>`;
+        return;
+      }
+
+      let wishlistIds = new Set();
+      if (MC.isLoggedIn()) {
+        try {
+          const wishlist = await MC.getWishlist();
+          wishlistIds = new Set(wishlist.map(w => w.id));
+        } catch (e) {}
+      }
+
+      container.className = 'mc-grid';
+      container.innerHTML = products.map(p => `
+        <div class="mc-product-card" data-id="${p.id}">
+          <img src="${p.image}" alt="${escapeHtml(p.name)}">
+          <h3>${escapeHtml(p.name)}</h3>
+          <div class="mc-price">₹${p.price.toFixed(2)}</div>
+          <div class="mc-product-actions">
+            <button class="mc-btn-add">Add to Cart</button>
+            <button class="mc-btn-wish ${wishlistIds.has(p.id) ? 'active' : ''}" title="Add to wishlist">🤍</button>
+          </div>
+        </div>
+      `).join('');
+
+      container.querySelectorAll('.mc-product-card').forEach(card => {
+        const id = card.dataset.id;
+        card.querySelector('.mc-btn-add').addEventListener('click', async () => {
+          await MC.addToCart(id, 1);
+          alert('Added to cart!');
+        });
+        card.querySelector('.mc-btn-wish').addEventListener('click', async function () {
+          if (this.classList.contains('active')) {
+            await MC.removeFromWishlist(id);
+            this.classList.remove('active');
+          } else {
+            await MC.addToWishlist(id);
+            this.classList.add('active');
+          }
+        });
+      });
+    }
+
+    render();
+  </script>
+</body>
+</html>

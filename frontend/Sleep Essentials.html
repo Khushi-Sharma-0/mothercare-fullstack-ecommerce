@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+          content="width=device-width, initial-scale=1.0">
+    <title>Online Baby Sleep Essentials Store</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffeef8;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        header {
+            background: linear-gradient(to right, #ff66b2, #ed8dbd);
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        header nav ul li {
+            display: inline;
+        }
+
+        header nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #f3f4f6;
+        }
+
+        #products {
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .product {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        .product img {
+            width: 100%;
+            max-width: 200px;
+            height: 200px;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .product h3 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .product p {
+            color: #666666;
+            margin-bottom: 0.5rem;
+        }
+
+        .product button {
+            background: linear-gradient(to right, #ff7ebf,#f0a2c9);
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            outline: none;
+        }
+
+        .product button:hover {
+            background: linear-gradient(to right,  #f95fac, #ed8dbd);
+        }
+
+        #cart {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+        }
+
+        #cart h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        #cart-items {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item button {
+            background: linear-gradient(to right, #ff4d4f, #ff6382);
+            color: #ffffff;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            outline: none;
+        }
+
+        .cart-item button:hover {
+            background: linear-gradient(to right, #e63c3f, #f34d6f);
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity button {
+            background: linear-gradient(to right,  #ff7ebf,#f0a2c9);
+            color: #ffffff;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            outline: none;
+        }
+
+        .quantity button:hover {
+            background: linear-gradient(to right, #ff66b2, #ed8dbd);
+        }
+
+        .quantity input {
+            width: 40px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin: 0 0.5rem;
+            padding: 4px;
+            outline: none;
+        }
+    </style>
+  <link rel="stylesheet" href="assets/css/mc-shared.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1> Online Baby Sleep Essentials Store</h1>
+            <nav>
+                <ul>
+                    <li><a href="Home_Page_New.html">Home</a></li>
+                    
+                    <li><a href="cart.html">Cart</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <section id="products">
+            <h2>Available Products</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 
+                        md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="product">
+                    <img 
+                    src=
+"https://staranddaisy.in/wp-content/uploads/2023/02/new_naturalwood_cot_main.jpg"
+                     alt="Crib">
+                    <h3>Crib</h3>
+                    <p>₹9,599.99</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('sleep-crib')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('sleep-crib')">🤍 Wishlist</button>
+                </div>
+                <div class="product">
+                    <img 
+                    src=
+"https://m.media-amazon.com/images/I/61ziM+ODA3L.jpg"
+                     alt="Swaddles">
+                    <h3>Swaddles</h3>
+                    <p>₹670.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('sleep-swaddles')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('sleep-swaddles')">🤍 Wishlist</button>
+                </div>
+                <div class="product">
+                    <img src=
+                    "https://annainthehouse.com/wp-content/uploads/2021/10/night-lights-for-babies.jpg"
+                      alt="Nightlight">
+                    <h3>Nightlight</h3>
+                    <p>₹290.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('sleep-nightlight')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('sleep-nightlight')">🤍 Wishlist</button>
+                </div>
+                <div class="product">
+                    <img src=
+"https://m.media-amazon.com/images/I/7141e6feH9L._AC_UF894,1000_QL80_.jpg"
+                     alt="Crib Mattress">
+                    <h3>Crib Mattress</h3>
+                    <p>₹50,190.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('sleep-crib-mattress')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('sleep-crib-mattress')">🤍 Wishlist</button>
+                </div>
+                <div class="product">
+                    <img src=
+"https://dreamydays.co/cdn/shop/products/9779BF11-F5E6-401C-8F9F-E9FDAF91FA0A2_900x.jpg?v=1666799059"
+                      alt="White noise machine">
+                    <h3>White noise machine</h3>
+                    <p>₹1605.00</p>
+                    <button class="mc-btn-add-inline" onclick="MC.addToCart('sleep-white-noise-machine')">Add to Cart</button>
+                    <button class="mc-btn-wish-inline" onclick="MC.addToWishlist('sleep-white-noise-machine')">🤍 Wishlist</button>
+                </div>
+            </div>
+        </section>
+        
+    </div>
+    
+  <script src="assets/js/mc-core.js"></script>
+  <script src="assets/js/navbar.js"></script>
+</body>
+
+</html>   

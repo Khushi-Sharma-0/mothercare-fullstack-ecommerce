@@ -1,0 +1,401 @@
+/* mc-shared.css — shared styles for the toolbar and all new pages
+   (login, register, cart, wishlist, search, checkout).
+   Palette matches the existing site: pink/rose accents on a soft blush background. */
+
+#mc-toolbar {
+  width: 100%;
+  background: linear-gradient(to right, #ff85a2, #ffb6c1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  position: relative;
+  z-index: 2000;
+}
+
+.mc-toolbar-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.mc-brand {
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.mc-search-form {
+  flex: 1 1 260px;
+  display: flex;
+  max-width: 480px;
+}
+
+.mc-search-form input {
+  flex: 1;
+  border: none;
+  border-radius: 20px 0 0 20px;
+  padding: 8px 14px;
+  font-size: 14px;
+  outline: none;
+  font-family: inherit;
+}
+
+.mc-search-form button {
+  border: none;
+  background: #e91e63;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 0 20px 20px 0;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.mc-search-form button:hover {
+  background: #c2185b;
+}
+
+.mc-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+.mc-action {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  white-space: nowrap;
+  padding: 6px 4px;
+}
+
+.mc-action:hover {
+  text-decoration: underline;
+}
+
+.mc-action-primary {
+  background: #e91e63;
+  padding: 6px 14px;
+  border-radius: 16px;
+}
+
+.mc-action-primary:hover {
+  background: #c2185b;
+  text-decoration: none;
+}
+
+.mc-hello {
+  font-weight: 600;
+}
+
+.mc-badge {
+  display: inline-block;
+  background: #e91e63;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 1px 6px;
+  margin-left: 5px;
+  min-width: 16px;
+  text-align: center;
+}
+
+/* ===== Shared page shell for new pages (login/register/cart/wishlist/search/checkout) ===== */
+
+.mc-page {
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  background-color: #fff0f5;
+  min-height: 100vh;
+  margin: 0;
+  color: #333;
+}
+
+.mc-page-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px 20px 60px;
+}
+
+.mc-page h1.mc-title {
+  color: #e91e63;
+  font-size: 28px;
+  margin-bottom: 24px;
+}
+
+.mc-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  padding: 24px;
+}
+
+.mc-auth-form {
+  max-width: 400px;
+  margin: 40px auto;
+}
+
+.mc-auth-form label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 14px 0 6px;
+  color: #444;
+}
+
+.mc-auth-form input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #f3b6c8;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+}
+
+.mc-auth-form input:focus {
+  border-color: #e91e63;
+}
+
+.mc-btn {
+  display: inline-block;
+  background: linear-gradient(to right, #ff66b2, #e91e63);
+  color: #fff;
+  border: none;
+  padding: 11px 22px;
+  border-radius: 24px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 18px;
+  width: 100%;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.mc-btn:hover {
+  box-shadow: 0 6px 14px rgba(233, 30, 99, 0.35);
+  transform: translateY(-1px);
+}
+
+.mc-btn-secondary {
+  background: #fff;
+  color: #e91e63;
+  border: 1.5px solid #e91e63;
+}
+
+.mc-link-row {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.mc-link-row a {
+  color: #e91e63;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.mc-error {
+  background: #ffe3e9;
+  color: #c2185b;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  margin-top: 14px;
+  display: none;
+}
+
+.mc-success {
+  background: #e6f9ec;
+  color: #1e7b3c;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  margin-top: 14px;
+  display: none;
+}
+
+/* Product grid used on search page and can be reused */
+.mc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.mc-product-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.25s ease;
+}
+
+.mc-product-card:hover {
+  transform: translateY(-4px);
+}
+
+.mc-product-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.mc-product-card h3 {
+  font-size: 15px;
+  margin: 6px 0;
+  color: #333;
+}
+
+.mc-product-card .mc-price {
+  color: #e91e63;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.mc-product-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.mc-product-actions button {
+  flex: 1;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 6px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.mc-btn-add {
+  background: linear-gradient(to right, #ff66b2, #e91e63);
+  color: white;
+}
+
+.mc-btn-wish {
+  background: #ffeef8;
+  color: #e91e63;
+  border: 1px solid #f3b6c8 !important;
+}
+
+.mc-btn-wish.active {
+  background: #e91e63;
+  color: white;
+}
+
+/* Cart / Wishlist tables */
+.mc-cart-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid #ffe0eb;
+}
+
+.mc-cart-row img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.mc-cart-row .mc-cart-name {
+  flex: 1;
+  font-weight: 600;
+}
+
+.mc-qty-control {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mc-qty-control button {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border: 1px solid #f3b6c8;
+  background: #fff;
+  cursor: pointer;
+  color: #e91e63;
+  font-weight: 700;
+}
+
+.mc-qty-control input {
+  width: 40px;
+  text-align: center;
+  border: 1px solid #f3b6c8;
+  border-radius: 6px;
+  padding: 4px;
+}
+
+.mc-remove-link {
+  color: #c2185b;
+  font-size: 13px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-decoration: underline;
+}
+
+.mc-cart-summary {
+  margin-top: 20px;
+  text-align: right;
+  font-size: 18px;
+  font-weight: 700;
+  color: #e91e63;
+}
+
+.mc-empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+}
+
+.mc-empty-state a {
+  color: #e91e63;
+  font-weight: 600;
+}
+
+/* Inline Add-to-Cart / Wishlist buttons injected into the original category pages */
+.mc-btn-add-inline,
+.mc-btn-wish-inline {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.mc-btn-wish-inline {
+  background: #ffeef8 !important;
+  color: #e91e63 !important;
+  border: 1px solid #f3b6c8 !important;
+}
+
+.mc-order-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 14px;
+}
+
+@media (max-width: 640px) {
+  .mc-toolbar-inner {
+    justify-content: center;
+  }
+  .mc-toolbar-actions {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+  }
+}

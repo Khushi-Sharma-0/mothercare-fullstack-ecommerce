@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Cart | MotherCare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/mc-shared.css">
+</head>
+<body class="mc-page">
+  <div class="mc-page-content">
+    <h1 class="mc-title">🛒 Your Cart</h1>
+    <div class="mc-card">
+      <div id="cart-container">Loading your cart…</div>
+      <div class="mc-cart-summary" id="cart-total" style="display:none;"></div>
+      <div style="text-align:right; margin-top:16px;">
+        <button class="mc-btn" id="checkout-btn" style="width:auto; display:none;">Proceed to Checkout →</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/mc-core.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script>
+    const container = document.getElementById('cart-container');
+    const totalBox = document.getElementById('cart-total');
+    const checkoutBtn = document.getElementById('checkout-btn');
+
+    async function render() {
+      if (!MC.isLoggedIn()) {
+        container.innerHTML = `<div class="mc-empty-state">Please <a href="login.html?next=cart.html">log in</a> to view your cart.</div>`;
+        return;
+      }
+      let cart;
+      try {
+        cart = await MC.getCart();
+      } catch (err) {
+        container.innerHTML = `<div class="mc-empty-state">${err.message}</div>`;
+        return;
+      }
+
+      if (cart.length === 0) {
+        container.innerHTML = `<div class="mc-empty-state">Your cart is empty. <a href="Banner.html">Start shopping →</a></div>`;
+        totalBox.style.display = 'none';
+        checkoutBtn.style.display = 'none';
+        return;
+      }
+
+      container.innerHTML = cart.map(item => `
+        <div class="mc-cart-row" data-id="${item.id}">
+          <img src="${item.image}" alt="${escapeHtml(item.name)}">
+          <div class="mc-cart-name">${escapeHtml(item.name)}<br><span style="color:#e91e63;">₹${item.price.toFixed(2)}</span></div>
+          <div class="mc-qty-control">
+            <button class="qty-minus">−</button>
+            <input type="number" min="1" value="${item.quantity}" class="qty-input">
+            <button class="qty-plus">+</button>
+          </div>
+          <div style="width:90px; text-align:right; font-weight:700;">₹${(item.price * item.quantity).toFixed(2)}</div>
+          <button class="mc-remove-link">Remove</button>
+        </div>
+      `).join('');
+
+      const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+      totalBox.style.display = 'block';
+      totalBox.textContent = `Total: ₹${total.toFixed(2)}`;
+      checkoutBtn.style.display = 'inline-block';
+
+      container.querySelectorAll('.mc-cart-row').forEach(row => {
+        const id = row.dataset.id;
+        row.querySelector('.qty-minus').addEventListener('click', async () => {
+          const input = row.querySelector('.qty-input');
+          const newQty = Math.max(1, parseInt(input.value || '1', 10) - 1);
+          await MC.updateCartQty(id, newQty);
+          render();
+        });
+        row.querySelector('.qty-plus').addEventListener('click', async () => {
+          const input = row.querySelector('.qty-input');
+          const newQty = parseInt(input.value || '1', 10) + 1;
+          await MC.updateCartQty(id, newQty);
+          render();
+        });
+        row.querySelector('.qty-input').addEventListener('change', async (e) => {
+          const newQty = Math.max(1, parseInt(e.target.value || '1', 10));
+          await MC.updateCartQty(id, newQty);
+          render();
+        });
+        row.querySelector('.mc-remove-link').addEventListener('click', async () => {
+          await MC.removeFromCart(id);
+          render();
+        });
+      });
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+    }
+
+    checkoutBtn.addEventListener('click', () => { window.location.href = 'checkout.html'; });
+
+    render();
+  </script>
+</body>
+</html>

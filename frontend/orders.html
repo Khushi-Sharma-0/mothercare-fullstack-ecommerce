@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Orders | MotherCare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/mc-shared.css">
+</head>
+<body class="mc-page">
+  <div class="mc-page-content">
+    <h1 class="mc-title">📦 My Orders</h1>
+    <div id="orders-container">Loading…</div>
+  </div>
+
+  <script src="assets/js/mc-core.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script>
+    const container = document.getElementById('orders-container');
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+    }
+
+    async function render() {
+      if (!MC.isLoggedIn()) {
+        container.innerHTML = `<div class="mc-empty-state">Please <a href="login.html?next=orders.html">log in</a> to view your orders.</div>`;
+        return;
+      }
+      let orders;
+      try {
+        orders = await MC.getOrders();
+      } catch (err) {
+        container.innerHTML = `<div class="mc-empty-state">${err.message}</div>`;
+        return;
+      }
+
+      if (orders.length === 0) {
+        container.innerHTML = `<div class="mc-empty-state">You haven't placed any orders yet. <a href="Banner.html">Start shopping →</a></div>`;
+        return;
+      }
+
+      container.innerHTML = orders.map(o => `
+        <div class="mc-card" style="margin-bottom:16px;">
+          <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+            <strong>Order #${o.id}</strong>
+            <span style="color:#e91e63; font-weight:700;">₹${o.total.toFixed(2)}</span>
+          </div>
+          <div style="font-size:13px; color:#888; margin:4px 0 10px;">
+            ${o.created_at} · Status: <strong>${escapeHtml(o.status)}</strong> · Payment: ${escapeHtml(o.payment_method || '-')}
+          </div>
+          ${o.items.map(i => `<div class="mc-order-line" style="font-size:14px;"><span>${escapeHtml(i.name)} × ${i.quantity}</span><span>₹${(i.price*i.quantity).toFixed(2)}</span></div>`).join('')}
+        </div>
+      `).join('');
+    }
+
+    render();
+  </script>
+</body>
+</html>

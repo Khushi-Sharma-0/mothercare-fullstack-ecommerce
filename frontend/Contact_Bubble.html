@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thank You | MotherCare</title>
+  <meta http-equiv="refresh" content="5;url=Home_Page_New.html">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffc1cc, #ffe4e1);
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background-color: rgba(255, 192, 203, 0.3);
+      animation: float 14s infinite ease-in-out;
+    }
+
+    .bubble:nth-child(1) {
+      width: 250px;
+      height: 250px;
+      left: 15%;
+      top: 65%;
+      animation-delay: 0s;
+    }
+
+    .bubble:nth-child(2) {
+      width: 140px;
+      height: 140px;
+      left: 75%;
+      top: 25%;
+      animation-delay: 2s;
+    }
+
+    .bubble:nth-child(3) {
+      width: 200px;
+      height: 220px;
+      left: 50%;
+      top: 80%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-180px) scale(1.1);
+        opacity: 0;
+      }
+    }
+
+    .message-box {
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.3);
+      padding: 50px 40px;
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      text-align: center;
+      color: #c2185b;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo {
+      width: 90px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      color: #e91e63;
+    }
+
+    p {
+      font-size: 1.1em;
+      color: #a0004d;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 25px;
+      text-decoration: none;
+      padding: 12px 28px;
+      background-color: #ffb6c1;
+      color: white;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1em;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    a:hover {
+      background-color: #ff69b4;
+      transform: scale(1.05);
+    }
+
+    .redirect-message {
+      margin-top: 10px;
+      font-size: 0.9em;
+      color: #a0004d;
+    }
+  </style>
+  <link rel="stylesheet" href="assets/css/mc-shared.css">
+</head>
+<body>
+
+  <!-- Floating bubbles -->
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+
+  <!-- Message Box -->
+  <div class="message-box">
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Thank You" class="logo">
+    <h1>Thank You!</h1>
+    <p>Your message has been sent successfully. We'll get back to you soon 💌</p>
+    <a href="Home_Page_New.html">Back to Home Page</a>
+    <p class="redirect-message">Redirecting in 5 seconds...</p>
+  </div>
+
+  <script src="assets/js/mc-core.js"></script>
+  <script src="assets/js/navbar.js"></script>
+</body>
+</html>

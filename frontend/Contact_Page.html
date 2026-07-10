@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffccd5, #ff9eb5);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .contact-form {
+      background: #fff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(255, 182, 193, 0.4);
+      max-width: 600px;
+      width: 100%;
+      transition: transform 0.3s ease;
+    }
+
+    .contact-form:hover {
+      transform: scale(1.01);
+    }
+
+    .contact-form h2 {
+      margin-bottom: 10px;
+      font-size: 28px;
+      color: #e91e63;
+      text-align: center;
+    }
+
+    .emoji {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .contact-form label {
+      font-weight: 500;
+      margin-top: 15px;
+      display: block;
+      color: #444;
+      font-size: 16px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 15px;
+      margin-top: 8px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #ff94b5;
+      box-shadow: 0 0 8px rgba(255, 147, 180, 0.5);
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .contact-form button {
+      margin-top: 25px;
+      width: 100%;
+      background: linear-gradient(to right, #ff85a2, #ffb6c1);
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .contact-form button:hover {
+      background: linear-gradient(to right, #ff6f91, #ffa6b9);
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 480px) {
+      .contact-form {
+        padding: 25px;
+      }
+
+      .contact-form h2 {
+        font-size: 24px;
+      }
+
+      .contact-form button {
+        font-size: 16px;
+      }
+
+      .emoji {
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/css/mc-shared.css">
+</head>
+<body>
+  <form class="contact-form" id="contactForm">
+    <!-- <div class="emoji">👼🏻</div> -->
+    <h2>👼 Contact Us</h2>
+    
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required
+           title="Enter a 10-digit phone number" />
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !phone.match(/^\d{10}$/) || !message) {
+        alert("Please fill in all fields correctly.");
+        return;
+      }
+
+      window.location.href = "Contact_Bubble.html";
+    });
+  </script>
+  <script src="assets/js/mc-core.js"></script>
+  <script src="assets/js/navbar.js"></script>
+</body>
+</html>
